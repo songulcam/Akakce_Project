@@ -129,7 +129,7 @@ public class Us_401 extends BaseDriver {
     }
 
     @Test
-    public void passwordEmpty(){
+    public void passwordNull(){
         driver.get("https://www.akakce.com/");
         MyFunc.Wait(1);
 
@@ -160,7 +160,7 @@ public class Us_401 extends BaseDriver {
     }
 
     @Test
-    public void emailEmpty(){
+    public void emailNull(){
         driver.get("https://www.akakce.com/");
         MyFunc.Wait(1);
 
@@ -187,7 +187,7 @@ public class Us_401 extends BaseDriver {
         okay.click();
         MyFunc.Wait(1);
 
-        driver.close();
+        driver.quit();
     }
 
 }
