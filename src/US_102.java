@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Us_201 extends BaseDriver {
+public class US_102 extends BaseDriver {
 
     @Test
     public void TestAccountCheck(){
