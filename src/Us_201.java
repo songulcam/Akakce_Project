@@ -13,7 +13,7 @@ public class Us_201 extends BaseDriver {
         driver.get("https://www.akakce.com/");
         MyFunc.Wait(2);
 
-        WebElement clickLogin=driver.findElement(By.xpath("//div[@id='H_rl_v8' ]//a[2]"));
+        WebElement clickLogin=driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
         clickLogin.click();
         MyFunc.Wait(2);
 
