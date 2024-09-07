@@ -105,8 +105,6 @@ public class US_107 extends BaseDriver {
         MyFunc.Wait(2);
 
         tearDown();
-
-
     }
 }
 
