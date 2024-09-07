@@ -43,6 +43,7 @@ public class US_103 extends BaseDriver {
 
         System.out.println("Giriş Yap görünür durumda mı?" +loginText.isDisplayed());
         Assert.assertTrue("Giriş Yap yazısı görünmüyor!",loginText.getText().contains("Giriş Yap"));
+        tearDown();
 
     }
 }
