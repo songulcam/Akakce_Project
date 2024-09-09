@@ -18,11 +18,4 @@ public class BaseDriver {
         MyFunc.Wait(2);
         driver.quit();
     }
-
-    public static void WaitAndQuit() // TearDown
-    {
-        MyFunc.Wait(3);
-        driver.quit();
-
-    }
 }
