@@ -5,10 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class Us_401 extends BaseDriver {
     String emailStr="sefakahraman0001@gmail.com";
@@ -280,5 +277,49 @@ public class Us_401 extends BaseDriver {
         }
         System.out.println("count = " + count);
         driver.close();
+    }
+
+    @Test
+    public void FooterMenu(){
+        driver.navigate().to("https://www.akakce.com/");
+        MyFunc.Wait(1);
+
+        WebElement login=driver.findElement(By.linkText("Giriş Yap"));
+        login.click();
+
+        WebElement email=driver.findElement(By.xpath("(//input[@type='email'])[2]"));
+        email.sendKeys(emailStr);
+        MyFunc.Wait(1);
+
+        WebElement password=driver.findElement(By.xpath("(//input[@type='password'])[1]"));
+        password.sendKeys(passwordStr);
+        MyFunc.Wait(1);
+
+        WebElement clickLogin=driver.findElement(By.xpath("(//input[@value='Giriş yap'])[1]"));
+        clickLogin.click();
+        MyFunc.Wait(1);
+
+        WebElement loginControl=driver.findElement(By.xpath("(//a[@rel='nofollow'])[1]"));
+        Assert.assertTrue("Giriş başarısız",loginControl.getText().contains("Sefa"));
+
+        List<WebElement> footerMenu=driver.findElements(By.xpath("(//div[contains(@class ,'links_v8')])[2]//a"));
+
+        for (int i = 0; i < footerMenu.size(); i++) {
+            footerMenu=driver.findElements(By.xpath("(//div[contains(@class ,'links_v8')])[2]//a[@title]"));
+            WebElement e=footerMenu.get(i);
+            e.click();
+            MyFunc.Wait(1);
+
+            WebElement footerMenuControl=driver.findElement(By.xpath("//body//h1"));
+            System.out.println("footerMenuControl.getText() = " + footerMenuControl.getText());
+            String[] footerMenuKeyWordStr={footerMenuControl.getText()};
+
+            for (String keyWord: footerMenuKeyWordStr){
+                Assert.assertTrue("Aranan ürün eşleşmedi",footerMenuControl.getText().contains(keyWord));
+            }
+            driver.navigate().back();
+            MyFunc.Wait(1);
+        }
+        driver.quit();
     }
 }
