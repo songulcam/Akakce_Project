@@ -38,10 +38,8 @@ public class US_106 extends BaseDriver {
         WebElement clickMessage=driver.findElement(By.cssSelector("li[class='order first']>:nth-child(3)"));
         clickMessage.click();
         MyFunc.Wait(2);
-        System.out.println();
 
         WebElement messageBox=driver.findElement(By.xpath("//div[@class='wbb_v8' ]/ p"));
-        System.out.println(messageBox.getText());
         System.out.println("Mesaj kutusundaki yazılar görünür durumda mı?"+messageBox.isDisplayed());
         Assert.assertTrue("'Listelenecek mesaj bulunamadı.' görüntülenememektedir.",messageBox.getText().contains("Listelenecek mesaj bulunamadı."));
 
@@ -51,7 +49,6 @@ public class US_106 extends BaseDriver {
 
         WebElement logout= driver.findElement(By.cssSelector("ul>:nth-child(6) a[href='#Çık' ]"));
         logout.click();
-        MyFunc.Wait(3);
         tearDown();
     }
 }
