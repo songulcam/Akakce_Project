@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class _01_CreateAccount extends BaseDriver {
+public class US_101 extends BaseDriver {
 
     @Test
     public void Test1(){

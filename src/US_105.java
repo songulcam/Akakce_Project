@@ -5,14 +5,14 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class US_105_SiparisListesiKontrolu extends BaseDriver {
+public class US_105 extends BaseDriver {
     @Test
     public void orderListTest(){
+        String Email="songulcam9396@gmail.com";
+        String Password="Elisa.1234";
 
         driver.get("https://www.akakce.com/");
         MyFunc.Wait(2);
-        String Email="songulcam9396@gmail.com";
-        String Password="Elisa.1234";
 
         WebElement signIn=driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
         signIn.click();
@@ -34,12 +34,12 @@ public class US_105_SiparisListesiKontrolu extends BaseDriver {
         team.click();
         MyFunc.Wait(2);
 
-        WebElement siparislerim=driver.findElement(By.xpath("(//li[@class='order first'])/a[1]"));
-        siparislerim.click();
+        WebElement myOrder=driver.findElement(By.xpath("(//li[@class='order first'])/a[1]"));
+        myOrder.click();
         MyFunc.Wait(2);
 
-        WebElement siparislerimKontrol=driver.findElement(By.cssSelector("[class='no-record']"));
-        Assert.assertTrue("Sipariş bulunuyor",siparislerimKontrol.getText().contains("Kayıtlı siparişiniz bulunmuyor."));
+        WebElement myOrderControl=driver.findElement(By.cssSelector("[class='no-record']"));
+        Assert.assertTrue("Sipariş bulunuyor",myOrderControl.getText().contains("Kayıtlı siparişiniz bulunmuyor."));
 
         driver.quit();
     }

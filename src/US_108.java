@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class Us_401 extends BaseDriver {
+public class US_108 extends BaseDriver {
     String emailStr="sefakahraman0001@gmail.com";
     String passwordStr="Earnq123**";
     String invalidPasswordStr="Earnq123";
@@ -280,7 +280,7 @@ public class Us_401 extends BaseDriver {
     }
 
     @Test
-    public void FooterMenu(){
+    public void footerMenu(){
         driver.navigate().to("https://www.akakce.com/");
         MyFunc.Wait(1);
 
