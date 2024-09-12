@@ -17,12 +17,6 @@ The test scenarios focus on the following features:
 4. **Message management** - Verify users' ability to manage their messages, check empty and full list status.
 5. **Account Deletion** - Validating the steps involved in deleting a user account and handling incorrect password inputs.
 
-## Test Environment
-- **Browsers:** Chrome
-- **Operating Systems:** Windows
-- **Prerequisites:**
-  - The browser must be installed and have an active internet connection.
-  - Test data should include valid account details for login scenarios.
 ## Contributors
 - **Sefa Kahraman** (QA Tester) (Team Lead)
 - **Abdulkerim Mutlu** (QA Tester)
