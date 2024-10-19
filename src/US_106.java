@@ -6,49 +6,105 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class US_106 extends BaseDriver {
+    String emailStr="team6@gmail.com";
+    String passwordStr="Team61234";
+    String wrongPassword="team6_1234";
 
     @Test
-    public void TestMessageBoxCheck(){
-
+    public void accountDeletePositiveTest(){
         driver.get("https://www.akakce.com/");
         MyFunc.Wait(2);
 
-        WebElement clickLogin=driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
-        clickLogin.click();
+        WebElement login=driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
+        login.click();
         MyFunc.Wait(2);
 
-        String username="kayaamervee01@gmail.com";
-        WebElement e_mail=driver.findElement(By.xpath("(//input[@type='email' ])[2]"));
-        e_mail.sendKeys(username);
+        WebElement email=driver.findElement(By.xpath("//input[@class='t' and @name='life']"));
+        email.sendKeys(emailStr);
         MyFunc.Wait(2);
 
-        String password="merve94KAYA";
-        WebElement writePassword=driver.findElement(By.xpath("(//input[@type='password' ])[1]"));
-        writePassword.sendKeys(password);
+        WebElement password=driver.findElement(By.xpath("(//input[@type='password'])[1]"));
+        password.sendKeys(passwordStr);
         MyFunc.Wait(2);
 
-        WebElement clickLogin1=driver.findElement(By.xpath("(//input[@value='Giriş yap' ])[1]"));
-        clickLogin1.click();
+        WebElement loginButton=driver.findElement(By.xpath("(//input[@value='Giriş yap'])[1]"));
+        loginButton.click();
         MyFunc.Wait(2);
 
         WebElement myProfile=driver.findElement(By.xpath("(//a[@rel='nofollow'])[1]"));
         myProfile.click();
         MyFunc.Wait(2);
 
-        WebElement clickMessage=driver.findElement(By.cssSelector("li[class='order first']>:nth-child(3)"));
-        clickMessage.click();
+        WebElement deleteAccount=driver.findElement(By.xpath("//a[text()='Hesabımı Sil']"));
+        deleteAccount.click();
         MyFunc.Wait(2);
 
-        WebElement messageBox=driver.findElement(By.xpath("//div[@class='wbb_v8' ]/ p"));
-        System.out.println("Mesaj kutusundaki yazılar görünür durumda mı?"+messageBox.isDisplayed());
-        Assert.assertTrue("'Listelenecek mesaj bulunamadı.' görüntülenememektedir.",messageBox.getText().contains("Listelenecek mesaj bulunamadı."));
-
-        WebElement clickAccount=driver.findElement(By.xpath("//a[@title='Hesabım' ]"));
-        clickAccount.click();
+        WebElement passwordBox=driver.findElement(By.xpath("//input[@name='p']"));
+        passwordBox.click();
         MyFunc.Wait(2);
 
-        WebElement logout= driver.findElement(By.cssSelector("ul>:nth-child(6) a[href='#Çık' ]"));
-        logout.click();
+        WebElement passwordWrite=driver.findElement(By.xpath("//input[@name='p']"));
+        passwordWrite.sendKeys(passwordStr);
+        MyFunc.Wait(2);
+
+        WebElement accountDelete=driver.findElement(By.xpath("//input[@type='submit']"));
+        accountDelete.click();
+        MyFunc.Wait(2);
+
+        WebElement deleteAccountControl=driver.findElement(By.xpath("//ul[@class='cul']//p//i"));
+        Assert.assertTrue("Hesabın Silinemedi", deleteAccountControl.getText().contains("Hesabın silindi"));
+        MyFunc.Wait(2);
+
+        tearDown();
+    }
+
+
+    @Test
+    public void deleteAccountNegativeTest(){
+        driver.get("https://www.akakce.com/");
+        MyFunc.Wait(2);
+
+        WebElement login=driver.findElement(By.xpath("(//a[text()='Giriş Yap'])[1]"));
+        login.click();
+        MyFunc.Wait(2);
+
+        WebElement email=driver.findElement(By.xpath("//input[@class='t' and @name='life']"));
+        email.sendKeys(emailStr);
+        MyFunc.Wait(2);
+
+        WebElement password=driver.findElement(By.xpath("(//input[@type='password'])[1]"));
+        password.sendKeys(passwordStr);
+        MyFunc.Wait(2);
+
+        WebElement loginButton=driver.findElement(By.xpath("(//input[@value='Giriş yap'])[1]"));
+        loginButton.click();
+        MyFunc.Wait(2);
+
+        WebElement myProfile=driver.findElement(By.xpath("(//a[@rel='nofollow'])[1]"));
+        myProfile.click();
+        MyFunc.Wait(2);
+
+        WebElement deleteAccount=driver.findElement(By.xpath("//a[text()='Hesabımı Sil']"));
+        deleteAccount.click();
+        MyFunc.Wait(2);
+
+        WebElement passwordBox=driver.findElement(By.xpath("//input[@name='p']"));
+        passwordBox.click();
+        MyFunc.Wait(2);
+
+        WebElement passwordWrite=driver.findElement(By.xpath("//input[@name='p']"));
+        passwordWrite.sendKeys(wrongPassword);
+        MyFunc.Wait(2);
+
+        WebElement accountDelete=driver.findElement(By.xpath("//input[@type='submit']"));
+        accountDelete.click();
+        MyFunc.Wait(2);
+
+        WebElement wrongPasswordControl=driver.findElement(By.xpath("//div[@class='alertX t2']//p"));
+        Assert.assertTrue("Hesabın Silindi", wrongPasswordControl.getText().contains("şifrenizi doğru girdiğinizden emin olun"));
+        MyFunc.Wait(2);
+
         tearDown();
     }
 }
+
